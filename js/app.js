@@ -5,6 +5,7 @@ let listCard = document.querySelector('.listCard');
 let body = document.querySelector('body');
 let total = document.querySelector('.total');
 let quantity = document.querySelector('.quantity');
+let cartButton = document.querySelector('cartButton')
 
 openShopping.addEventListener('click', ()=>{
     body.classList.add('active');
@@ -74,6 +75,7 @@ function addToCard(key){
         listCards[key] = JSON.parse(JSON.stringify(products[key]));
         listCards[key].quantity = 1;
     }
+    
     body.classList.add('active');
     
     reloadCard();
@@ -93,10 +95,10 @@ function reloadCard(){
                 <div>${value.name}</div>
                 <div>${value.price.toLocaleString()}</div>
                 <div>
-                    <button onclick="changeQuantity(${key}, ${value.quantity - 1})">-</button>
+                    <button class="p-2" onclick="changeQuantity(${key}, ${value.quantity - 1})">-</button>
                     <div class="count">${value.quantity}</div>
-                    <button onclick="changeQuantity(${key}, ${value.quantity + 1})">+</button>
-                    <button onclick="removeItem(${key})">Remove</button>
+                    <button class="p-2" onclick="changeQuantity(${key}, ${value.quantity + 1})">+</button>
+                    <button class="ml-3 text-white p-2" onclick="removeItem(${key})">Remove</button>
                 </div>
                 `;
                 listCard.appendChild(newDiv);
